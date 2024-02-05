@@ -26,11 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum layers
 {
     _ALPHA_COLEMAK = 0,
-    _ALPHA_COLEMAK_R,
     _GAME,
     _SYM,
     _SYM2,
-    _SYM3,
     _NAV,
     _NUM,
     _FKEYS,
@@ -59,6 +57,7 @@ typedef struct {
 // Tap dance enums
 enum {
     TD_R_SPC_TAB_NAV,
+    TD_R_BSPC_CFG_TAB,
     TD_SYM_NUM_ENT
 };
 
@@ -70,28 +69,20 @@ void x_finished(tap_dance_state_t *state, void *user_data);
 void x_reset(tap_dance_state_t *state, void *user_data);
 
 
-
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_ALPHA_COLEMAK] = LAYOUT(
-        KC_Q,           KC_W,    KC_F,    KC_P,    KC_B,                                                   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-        KC_A,           KC_R,    KC_S,    KC_T,    KC_G,                                                   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-        LSFT_T(KC_DOT),  KC_Z, KC_X,    KC_C,    KC_D,                                                      XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX,  XXXXXXX,
-                        LT(_CFG, KC_BSPC), TD(TD_R_SPC_TAB_NAV), KC_ENT,     XXXXXXX, XXXXXXX, XXXXXXX
+        KC_Q,           KC_W,    KC_F,    KC_P,    KC_B,                                                   KC_J,    KC_L,    KC_U,    KC_Y,    KC_ESC,
+        KC_A,           KC_R,    KC_S,    KC_T,    KC_G,                                                   KC_M,    KC_N,    KC_E,    KC_I,    KC_O,
+        LSFT_T(KC_DOT),  KC_Z, KC_X,    KC_C,    KC_D,                                                      KC_V,    KC_K,    KC_H, KC_COMM,  KC_SCLN,
+                        LT(_CFG, KC_BSPC), TD(TD_R_SPC_TAB_NAV), KC_ENT,                XXXXXXX, XXXXXXX, KC_DEL
     ),
     [_GAME] = LAYOUT(
         KC_TAB,   KC_Q,         KC_W,    KC_E,    KC_R,                                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
         KC_LALT,   KC_A,         KC_S,    KC_D,    KC_F,                                                    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
         KC_LSFT,   KC_Z,         KC_X,    KC_C,    KC_V,                                                    KC_N,    KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
-                                        MO(_CFG), KC_SPC, KC_ENT,                           LT(_SYM, KC_BSPC), KC_ENT, LALT_T(KC_DEL)
-    ),
-    [_ALPHA_COLEMAK_R] = LAYOUT(
-        KC_ESC,      KC_Y,    KC_U,    KC_L,    KC_J,                                                   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-        KC_O,         KC_I,    KC_E,    KC_N,    KC_M,                                                   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-        KC_SCLN,  KC_COMM, KC_H,    KC_K,  KC_V,                                                  XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX,  XXXXXXX,
-                                KC_DEL, _______, _______,                                  XXXXXXX, XXXXXXX, XXXXXXX
+                                        TD(TD_R_BSPC_CFG_TAB), KC_SPC, KC_ENT,                           LT(_SYM, KC_BSPC), KC_ENT, LALT_T(KC_DEL)
     ),
     [_SYM] = LAYOUT(
         KC_GRV,  KC_MINS, KC_LCBR, KC_RCBR,  KC_SCLN,                                KC_AMPR, KC_EXLM, KC_PIPE, KC_UNDS, KC_HASH,
@@ -100,13 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         TO(_ALPHA_COLEMAK), _______, _______,    XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_SYM2] = LAYOUT(
-        KC_QUOT,  KC_COLN, KC_MINS, KC_PLUS,  KC_TILD,                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX,  KC_EXLM,  KC_LT, KC_GT,  KC_EQL,                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, KC_UNDS, KC_LBRC, KC_RBRC,  KC_COLN,                                XXXXXXX, XXXXXXX, KC_MINS, XXXXXXX, _______,
-                                        TO(_ALPHA_COLEMAK), _______, _______,    XXXXXXX, XXXXXXX, XXXXXXX
-    ),
-    [_SYM3] = LAYOUT(
-        KC_ESC,  KC_MINS, KC_MINS, KC_PLUS,  KC_TILD,                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_QUOT,  KC_COLN, KC_MINS, KC_PLUS,  KC_TILD,                                XXXXXXX, KC_PLUS, KC_MINS, KC_MINS, KC_ESC,
         XXXXXXX,  KC_EXLM,  KC_LT, KC_GT,  KC_EQL,                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_UNDS, KC_LBRC, KC_RBRC,  KC_COLN,                                XXXXXXX, XXXXXXX, KC_MINS, XXXXXXX, _______,
                                         TO(_ALPHA_COLEMAK), _______, _______,    XXXXXXX, XXXXXXX, XXXXXXX
@@ -136,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         TO(_ALPHA_COLEMAK), _______, _______,     KC_PEQL, KC_PENT, XXXXXXX
     ),
     [_CFG] = LAYOUT(
-        XXXXXXX, TO(_SYM3), XXXXXXX, TO(_FKEYS), DF(_GAME),                                XXXXXXX, XXXXXXX, XXXXXXX,DF(_ALPHA_COLEMAK_R), DF(_ALPHA_COLEMAK),
+        XXXXXXX, XXXXXXX, XXXXXXX, TO(_FKEYS), DF(_GAME),                                XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX,
         TO(_SYM2), TO(_SYM), TO(_NAV), TO(_NUM), DF(_ALPHA_COLEMAK),                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), TO(_MOUSE),                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                         TO(_ALPHA_COLEMAK), _______, _______,     XXXXXXX, XXXXXXX, XXXXXXX
@@ -176,7 +161,7 @@ void r_spc_tab_finished(tap_dance_state_t *state, void *user_data) {
     xtap_state.state = cur_dance(state);
     switch (xtap_state.state) {
         case TD_SINGLE_TAP: register_code(KC_SPC); break;
-        case TD_SINGLE_HOLD: layer_on(_ALPHA_COLEMAK_R); break;
+        case TD_SINGLE_HOLD: swap_hands_on(); break;
         case TD_DOUBLE_TAP: register_code(KC_TAB); break;
         case TD_DOUBLE_HOLD: layer_on(_NAV); break;
         case TD_DOUBLE_SINGLE_TAP: tap_code(KC_SPC); register_code(KC_SPC); break;
@@ -187,7 +172,7 @@ void r_spc_tab_finished(tap_dance_state_t *state, void *user_data) {
 void r_spc_tab_reset(tap_dance_state_t *state, void *user_data) {
     switch (xtap_state.state) {
         case TD_SINGLE_TAP: unregister_code(KC_SPC); break;
-        case TD_SINGLE_HOLD: layer_off(_ALPHA_COLEMAK_R); break;
+        case TD_SINGLE_HOLD: swap_hands_off(); break;
         case TD_DOUBLE_TAP: unregister_code(KC_TAB); break;
         case TD_DOUBLE_HOLD: layer_off(_NAV); break;
         case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_SPC); break;
@@ -196,8 +181,39 @@ void r_spc_tab_reset(tap_dance_state_t *state, void *user_data) {
     xtap_state.state = TD_NONE;
 }
 
+
+static td_tap_t x1tap_state = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+void r_bck_tab_finished(tap_dance_state_t *state, void *user_data) {
+    x1tap_state.state = cur_dance(state);
+    switch (x1tap_state.state) {
+        case TD_SINGLE_TAP: register_code(KC_BSPC); break;
+        case TD_SINGLE_HOLD: swap_hands_on(); break;
+        case TD_DOUBLE_TAP: register_code(KC_TAB); break;
+        case TD_DOUBLE_HOLD: layer_on(_CFG); break;
+        case TD_DOUBLE_SINGLE_TAP: tap_code(KC_BSPC); register_code(KC_BSPC); break;
+        default: break;
+    }
+}
+
+void r_bck_tab_reset(tap_dance_state_t *state, void *user_data) {
+    switch (x1tap_state.state) {
+        case TD_SINGLE_TAP: unregister_code(KC_BSPC); break;
+        case TD_SINGLE_HOLD: swap_hands_off(); break;
+        case TD_DOUBLE_TAP: unregister_code(KC_TAB); break;
+        case TD_DOUBLE_HOLD: layer_off(_CFG); break;
+        case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_BSPC); break;
+        default: break;
+    }
+    x1tap_state.state = TD_NONE;
+}
+
 tap_dance_action_t tap_dance_actions[] = {
     [TD_R_SPC_TAB_NAV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, r_spc_tab_finished, r_spc_tab_reset),
+    [TD_R_BSPC_CFG_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, r_bck_tab_finished, r_bck_tab_reset),
 };
 
 
