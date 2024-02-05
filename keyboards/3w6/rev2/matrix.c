@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "i2c_master.h"
 
 extern i2c_status_t tca9555_status;
-#define I2C_TIMEOUT 1000
+#define I2C_TIMEOUT 10
 
 // I2C address:
 // All address pins of the tca9555 are connected to the ground
