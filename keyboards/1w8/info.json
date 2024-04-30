@@ -1,0 +1,40 @@
+{
+    "keyboard_name": "1w8",
+    "manufacturer": "weteor",
+    "url": "https://github.com/weteor/3W6/",
+    "maintainer": "weteor",
+    "usb": {
+        "vid": "0xFEED",
+        "pid": "0x4658",
+        "device_version": "0.0.2"
+    },
+    "processor": "atmega32u4",
+    "bootloader": "atmel-dfu",
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix": [0, 0], "x": 0, "y": 0.8},
+                {"matrix": [0, 1], "x": 1, "y": 0.2},
+                {"matrix": [0, 2], "x": 2, "y": 0},
+                {"matrix": [0, 3], "x": 3, "y": 0.2},
+                {"matrix": [0, 4], "x": 4, "y": 0.4},
+
+                {"matrix": [1, 0], "x": 0, "y": 1.8},
+                {"matrix": [1, 1], "x": 1, "y": 1.2},
+                {"matrix": [1, 2], "x": 2, "y": 1},
+                {"matrix": [1, 3], "x": 3, "y": 1.2},
+                {"matrix": [1, 4], "x": 4, "y": 1.4},
+
+                {"matrix": [2, 0], "x": 0, "y": 2.8},
+                {"matrix": [2, 1], "x": 1, "y": 2.2},
+                {"matrix": [2, 2], "x": 2, "y": 2},
+                {"matrix": [2, 3], "x": 3, "y": 2.2},
+                {"matrix": [2, 4], "x": 4, "y": 2.4},
+
+                {"matrix": [3, 2], "x": 3.2, "y": 3.6},
+                {"matrix": [3, 3], "x": 4.2, "y": 3.6},
+                {"matrix": [3, 4], "x": 5.2, "y": 3.8}
+            ]
+        }
+    }
+}
