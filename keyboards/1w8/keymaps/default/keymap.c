@@ -52,8 +52,8 @@ void x_reset(tap_dance_state_t *state, void *user_data);
 
 enum layers
 {
-    _ALPHA_COLEMAK = 0,
-    _ALPHA_COLEMAK_R,
+    _A = 0,
+    _A_R,
     _GAME,
     _SYM,
     _SYM2,
@@ -67,74 +67,74 @@ enum layers
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_ALPHA_COLEMAK] = LAYOUT(
-        KC_Q,         KC_W,    KC_F,    KC_P,    KC_B,
-        KC_A,          KC_R,    KC_S,    KC_T,    KC_G,
-        LSFT_T(KC_DOT),  KC_Z, KC_X,    KC_C,    KC_D,
-
+    [_A] = LAYOUT(
+        KC_Q,               KC_W,       KC_F,    KC_P,    KC_B,
+        KC_A,               KC_R,       KC_S,    KC_T,    KC_G,
+        LSFT_T(KC_DOT),     KC_Z,       KC_X,    KC_C,    KC_D,
                         LT(_MOUSE, KC_BSPC), TD(TD_R_SPC_TAB_NAV), LT(_CFG, KC_ENT)
     ),
-    [_ALPHA_COLEMAK_R] = LAYOUT(
-        KC_ESC,      KC_Y,    KC_U,    KC_L,    KC_J,
-        KC_O,         KC_I,    KC_E,    KC_N,    KC_M,
-        KC_SCLN,  KC_COMM, KC_H,    KC_K,  KC_V,
+    [_A_R] = LAYOUT(
+        KC_ESC,             KC_Y,       KC_U,    KC_L,    KC_J,
+        KC_O,               KC_I,       KC_E,    KC_N,    KC_M,
+        KC_SCLN,            KC_COMM,    KC_H,    KC_K,      KC_V,
                                 XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_GAME] = LAYOUT(
-        KC_TAB,   KC_Q,         KC_W,    KC_E,    KC_R,
-        KC_LALT,   KC_A,         KC_S,    KC_D,    KC_F,
-        KC_LSFT,   KC_Z,         KC_X,    KC_C,    KC_V,
+        KC_TAB,     KC_Q,         KC_W,    KC_E,    KC_R,
+        KC_LALT,    KC_A,         KC_S,    KC_D,    KC_F,
+        KC_LSFT,    KC_Z,         KC_X,    KC_C,    KC_V,
                                     MO(_CFG), KC_SPC, KC_ENT
     ),
     [_SYM] = LAYOUT(
-        KC_GRV,  KC_MINS, KC_LCBR, KC_RCBR,  KC_SCLN,
-        KC_DQT,  KC_UNDS,  KC_LPRN, KC_RPRN,  KC_EQL,
-        LT(_FKEYS, LSFT(KC_BSLS)), KC_EXLM, KC_LBRC, KC_RBRC,  KC_COLON,
-                                        TO(_ALPHA_COLEMAK), _______, _______
+        KC_GRV,                     KC_MINS,    KC_LCBR, KC_RCBR,  KC_SCLN,
+        KC_DQT,                     KC_UNDS,    KC_LPRN, KC_RPRN,  KC_EQL,
+        LT(_FKEYS, LSFT(KC_BSLS)),  KC_EXLM,    KC_LBRC, KC_RBRC,  KC_COLON,
+                                        _______, _______, _______
     ),
     [_SYM2] = LAYOUT(
-        KC_QUOT,  KC_COLN, KC_MINS, KC_PLUS,  KC_TILD,
-        XXXXXXX,  KC_EXLM,  KC_LT, KC_GT,  KC_EQL,
-        XXXXXXX, KC_UNDS, KC_LBRC, KC_RBRC,  KC_COLN,
-                                        TO(_ALPHA_COLEMAK), _______, _______
+        KC_QUOT,    KC_COLN,    KC_MINS,    KC_PLUS,    KC_TILD,
+        XXXXXXX,    KC_EXLM,    KC_LT,      KC_GT,      KC_EQL,
+        XXXXXXX,    KC_UNDS,    KC_LBRC,    KC_RBRC,    KC_COLN,
+                                        _______, _______, _______
     ),
     [_SYM3] = LAYOUT(
-        KC_ESC,  KC_MINS, KC_MINS, KC_PLUS,  KC_TILD,
-        XXXXXXX,  KC_EXLM,  KC_LT, KC_GT,  KC_EQL,
-        XXXXXXX, KC_UNDS, KC_LBRC, KC_RBRC,  KC_COLN,
-                                        TO(_ALPHA_COLEMAK), _______, _______
+        KC_ESC,     KC_MINS,    KC_MINS,    KC_PLUS,    KC_TILD,
+        XXXXXXX,    KC_EXLM,    KC_LT,      KC_GT,      KC_EQL,
+        XXXXXXX,    KC_UNDS,    KC_LBRC,    KC_RBRC,    KC_COLN,
+                                        _______, _______, _______
     ),
     [_NAV] = LAYOUT(
-        XXXXXXX, KC_PGDN, KC_UP, KC_PGUP, KC_DEL,
-        KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                        TO(_ALPHA_COLEMAK), _______, LT(_CFG, KC_ENT)
+        XXXXXXX, KC_PGDN, KC_UP,    KC_PGUP, KC_DEL,
+        KC_HOME, KC_LEFT, KC_DOWN,  KC_RGHT, KC_END,
+        XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
+                                        _______, _______, _______
     ),
     [_NUM] = LAYOUT(
-        XXXXXXX,  KC_7,  KC_8,  KC_9,  KC_DOT,
-        XXXXXXX,     KC_4,  KC_5,  KC_6,  KC_0,
+        KC_MINS,  KC_7,  KC_8,  KC_9,  KC_DOT,
+        KC_SLSH,  KC_4,  KC_5,  KC_6,  KC_0,
         XXXXXXX,  KC_1,  KC_2,  KC_3,  KC_COMM,
-                                        TO(_ALPHA_COLEMAK), _______, LT(_CFG, KC_ENT)
+                                        _______, _______, _______
     ),
     [_FKEYS] = LAYOUT(
-        XXXXXXX,  KC_F7,  KC_F8,  KC_F9,  KC_F12,
-        XXXXXXX,  KC_F4,  KC_F5,  KC_F6,  KC_F11,
-        XXXXXXX,  KC_F1,  KC_F2,  KC_F3,  KC_F10,
-                                        TO(_ALPHA_COLEMAK), _______, _______
+        KC_F15,  KC_F7,  KC_F8,  KC_F9,  KC_F12,
+        KC_F14,  KC_F4,  KC_F5,  KC_F6,  KC_F11,
+        KC_F13,  KC_F1,  KC_F2,  KC_F3,  KC_F10,
+                                        _______, _______, _______
     ),
     [_MOUSE] = LAYOUT(
         KC_BTN1,  XXXXXXX,  KC_MS_U,  XXXXXXX,  KC_WH_U,
         KC_BTN3,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_WH_D,
         KC_BTN2,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-                                        TO(_ALPHA_COLEMAK), _______, _______
+                                        _______, _______, _______
     ),
     [_CFG] = LAYOUT(
-        DF(_ALPHA_COLEMAK), DF(_SYM3), DF(_FKEYS), XXXXXXX, DF(_GAME),
-        XXXXXXX, DF(_SYM), TO(_NAV), TO(_NUM), XXXXXXX,
-        XXXXXXX, DF(_SYM2), XXXXXXX, XXXXXXX, XXXXXXX,
-                                 TO(_ALPHA_COLEMAK), XXXXXXX, LT(_CFG, KC_ENT)
+        DF(_A),         TO(_SYM3),      TO(_SYM2),      TO(_FKEYS),     DF(_GAME),
+        XXXXXXX,        TO(_SYM),       TO(_A),         TO(_NUM),       XXXXXXX,
+        OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  XXXXXXX,
+                                 TO(_A), XXXXXXX, _______
     ),
 };
+
 
 
 
@@ -170,7 +170,7 @@ void r_spc_tab_finished(tap_dance_state_t *state, void *user_data) {
     xtap_state.state = cur_dance(state);
     switch (xtap_state.state) {
         case TD_SINGLE_TAP: register_code(KC_SPC); break;
-        case TD_SINGLE_HOLD: layer_on(_ALPHA_COLEMAK_R); break;
+        case TD_SINGLE_HOLD: layer_on(_A_R); break;
         case TD_DOUBLE_TAP: register_code(KC_TAB); break;
         case TD_DOUBLE_HOLD: layer_on(_NAV); break;
         case TD_DOUBLE_SINGLE_TAP: tap_code(KC_SPC); register_code(KC_SPC); break;
@@ -181,7 +181,7 @@ void r_spc_tab_finished(tap_dance_state_t *state, void *user_data) {
 void r_spc_tab_reset(tap_dance_state_t *state, void *user_data) {
     switch (xtap_state.state) {
         case TD_SINGLE_TAP: unregister_code(KC_SPC); break;
-        case TD_SINGLE_HOLD: layer_off(_ALPHA_COLEMAK_R); break;
+        case TD_SINGLE_HOLD: layer_off(_A_R); break;
         case TD_DOUBLE_TAP: unregister_code(KC_TAB); break;
         case TD_DOUBLE_HOLD: layer_off(_NAV); break;
         case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_SPC); break;
