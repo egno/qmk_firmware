@@ -238,7 +238,7 @@ void s2_spc_tab_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_R_SPC_NAV_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, r_spc_tab_finished, r_spc_tab_reset),
+    [TD_R_SPC_NAV_TAB]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, r_spc_tab_finished, r_spc_tab_reset),
     [TD_FN_SPC_NAV_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fn_spc_tab_finished, fn_spc_tab_reset),
     [TD_S2_SPC_NAV_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, s2_spc_tab_finished, s2_spc_tab_reset),
 };
@@ -246,7 +246,7 @@ tap_dance_action_t tap_dance_actions[] = {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
 #ifdef CONSOLE_ENABLE
-    uprintf("LAYER: %2u\n", state);
+    uprintf("LAYER: %016b\n", state);
 #endif
 return state;
 }
