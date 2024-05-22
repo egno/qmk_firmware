@@ -43,7 +43,8 @@ enum {
     TD_R_SPC_NAV_TAB,
     TD_FN_SPC_NAV_TAB,
     TD_S2_SPC_NAV_TAB,
-    TD_SYM_NUM_ENT
+    TD_SYM_NUM_ENT,
+    TD_CFG_ENT,
 };
 
 td_state_t cur_dance(tap_dance_state_t *state);
@@ -72,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,               KC_W,       KC_F,    KC_P,    KC_B,
         KC_A,               KC_R,       KC_S,    KC_T,    KC_G,
         LSFT_T(KC_DOT),     KC_Z,       KC_X,    KC_C,    KC_D,
-                        LT(_MOUSE, KC_BSPC), TD(TD_R_SPC_NAV_TAB), LT(_CFG, KC_ENT)
+                        LT(_MOUSE, KC_BSPC), TD(TD_R_SPC_NAV_TAB), TD(TD_CFG_ENT)
     ),
     [_A_R] = LAYOUT(
         KC_ESC,             KC_Y,       KC_U,    KC_L,    KC_J,
@@ -124,15 +125,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_CFG] = LAYOUT(
         DF(_A),         OSL(_SYM3),     XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        OSL(_SYM),      OSL(_NUM),      TO(0),         XXXXXXX,
+        XXXXXXX,        OSL(_SYM),      OSL(_NUM),      XXXXXXX,         XXXXXXX,
         OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  XXXXXXX,
-                                 TO(0), XXXXXXX, _______
+                                 XXXXXXX, XXXXXXX, _______
     ),
 };
-
-
-
-
 
 td_state_t cur_dance(tap_dance_state_t *state) {
     if (state->count == 1) {
@@ -238,10 +235,36 @@ void s2_spc_tab_reset(tap_dance_state_t *state, void *user_data) {
     xtap_state.state = TD_NONE;
 }
 
+// CFG
+void cfg_ent_finished(tap_dance_state_t *state, void *user_data) {
+    xtap_state.state = cur_dance(state);
+    switch (xtap_state.state) {
+        case TD_SINGLE_TAP: register_code(KC_ENT); break;
+        case TD_SINGLE_HOLD: reset_oneshot_layer(); layer_on(_CFG); break;
+        case TD_DOUBLE_TAP: reset_oneshot_layer(); break;
+        case TD_DOUBLE_HOLD: reset_oneshot_layer(); layer_on(_CFG); break;
+        case TD_DOUBLE_SINGLE_TAP: tap_code(KC_ENT); register_code(KC_ENT); break;
+        default: break;
+    }
+}
+
+void cfg_ent_reset(tap_dance_state_t *state, void *user_data) {
+    switch (xtap_state.state) {
+        case TD_SINGLE_TAP: unregister_code(KC_ENT); break;
+        case TD_SINGLE_HOLD: layer_off(_CFG); break;
+        case TD_DOUBLE_TAP: reset_oneshot_layer(); break;
+        case TD_DOUBLE_HOLD: reset_oneshot_layer(); layer_off(_CFG); break;
+        case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_ENT); break;
+        default: break;
+    }
+    xtap_state.state = TD_NONE;
+}
+
 tap_dance_action_t tap_dance_actions[] = {
     [TD_R_SPC_NAV_TAB]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, r_spc_tab_finished, r_spc_tab_reset),
     [TD_FN_SPC_NAV_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fn_spc_tab_finished, fn_spc_tab_reset),
     [TD_S2_SPC_NAV_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, s2_spc_tab_finished, s2_spc_tab_reset),
+    [TD_CFG_ENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, cfg_ent_finished, cfg_ent_reset),
 };
 
 
