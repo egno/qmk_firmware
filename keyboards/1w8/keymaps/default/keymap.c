@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,               KC_W,       KC_F,    KC_P,    KC_B,
         KC_A,               KC_R,       KC_S,    KC_T,    KC_G,
         LSFT_T(KC_DOT),     KC_Z,       KC_X,    KC_C,    KC_D,
-                        LT(_MOUSE, KC_BSPC), TD(TD_R_SPC_NAV_TAB), LT(_CFG, KC_ENT)
+                        LT(_MOUSE, KC_BSPC), TD(TD_R_SPC_NAV_TAB), TD(TD_CFG_ENT)
     ),
     [_A_R] = LAYOUT(
         KC_ESC,             KC_Y,       KC_U,    KC_L,    KC_J,
@@ -38,9 +38,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_SYM] = LAYOUT(
-        LSFT(KC_GRV),   LSFT(KC_7),    LSFT(KC_8), LSFT(KC_9),  LSFT(KC_EQL),
+        LSFT(KC_GRV),   LSFT(KC_1),    LSFT(KC_2), LSFT(KC_3),  LSFT(KC_EQL),
         XXXXXXX,        LSFT(KC_4),    LSFT(KC_5), LSFT(KC_6),  LSFT(KC_MINS),
-        LSFT(KC_BSLS),  LSFT(KC_1),    LSFT(KC_2), LSFT(KC_2),  LSFT(KC_0),
+        LSFT(KC_BSLS),  LSFT(KC_7),    LSFT(KC_8), LSFT(KC_9),  LSFT(KC_0),
                                         _______, TD(TD_S2_SPC_NAV_TAB), _______
     ),
     [_SYM2] = LAYOUT(
@@ -62,26 +62,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, TD(TD_FN_SPC_NAV_TAB), _______
     ),
     [_FKEYS] = LAYOUT(
-        KC_F14,  KC_F1,  KC_F2,  KC_F3,  KC_F11,
+        KC_F15,  KC_F1,  KC_F2,  KC_F3,  KC_F11,
         KC_F10,  KC_F4,  KC_F5,  KC_F6,  KC_F12,
-        KC_F15,  KC_F7,  KC_F8,  KC_F9,  KC_F13,
+        KC_F14,  KC_F7,  KC_F8,  KC_F9,  KC_F13,
+                                        _______, _______, _______
+    ),
+    [_MM] = LAYOUT(
+        KC_LAUNCHPAD,  KC_MEDIA_NEXT_TRACK,  KC_KB_VOLUME_UP,    KC_BRIGHTNESS_UP,   KC_SYSTEM_WAKE,
+        KC_MISSION_CONTROL, KC_MEDIA_PREV_TRACK,  KC_KB_VOLUME_DOWN,  KC_BRIGHTNESS_DOWN, KC_SYSTEM_SLEEP,
+        XXXXXXX,  KC_MEDIA_PLAY_PAUSE,  KC_KB_MUTE,         XXXXXXX,            KC_KB_POWER,
                                         _______, _______, _______
     ),
     [_NAV] = LAYOUT(
-        XXXXXXX, KC_PGDN, KC_UP,    KC_PGUP, KC_DEL,
-        KC_HOME, KC_LEFT, KC_DOWN,  KC_RGHT, KC_END,
-        XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
+        G(KC_Z),    KC_HOME,    KC_UP,      KC_END,         KC_PGUP ,
+        KC_DEL,     KC_LEFT,    KC_DOWN,    KC_RGHT,        KC_PGDN,
+        G(KC_X),    A(KC_LEFT), G(KC_V),    A(KC_RIGHT),    G(KC_C),
                                         _______, _______, _______
     ),
     [_MOUSE] = LAYOUT(
-        KC_BTN1,  XXXXXXX,  KC_MS_U,  XXXXXXX,  KC_WH_U,
-        KC_BTN3,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_WH_D,
-        KC_BTN2,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+        KC_BTN3,  KC_WH_L,  KC_MS_U,  KC_WH_R,  KC_WH_U,
+        KC_BTN1,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_WH_D,
+        KC_BTN2,  KC_BTN4,  KC_BTN5,  KC_BTN6,  KC_BTN7,
                                         _______, _______, _______
     ),
     [_CFG] = LAYOUT(
-        DF(_A),         OSL(_SYM3),     XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        OSL(_SYM),      OSL(_NUM),      TO(0),         XXXXXXX,
+        XXXXXXX,        OSL(_SYM3),     XXXXXXX,        OSL(_NAV),        XXXXXXX,
+        OSL(_MM),       OSL(_SYM),      OSL(_NUM),      TO(_A),         XXXXXXX,
         OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  XXXXXXX,
                                  XXXXXXX, XXXXXXX, _______
     ),
