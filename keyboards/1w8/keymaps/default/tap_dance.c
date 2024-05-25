@@ -130,9 +130,9 @@ void cfg_ent_finished(tap_dance_state_t *state, void *user_data) {
     xtap_state.state = cur_dance(state);
     switch (xtap_state.state) {
         case TD_SINGLE_TAP: register_code(KC_ENT); break;
-        case TD_SINGLE_HOLD: reset_oneshot_layer(); layer_on(_CFG); break;
-        case TD_DOUBLE_TAP: reset_oneshot_layer(); break;
-        case TD_DOUBLE_HOLD: reset_oneshot_layer(); layer_on(_CFG); break;
+        case TD_SINGLE_HOLD: reset_oneshot_layer(); layer_clear(); layer_on(_CFG); break;
+        case TD_DOUBLE_TAP: break;
+        case TD_DOUBLE_HOLD: clear_oneshot_mods(); reset_oneshot_layer(); layer_clear(); layer_on(_CFG); break;
         case TD_DOUBLE_SINGLE_TAP: tap_code(KC_ENT); register_code(KC_ENT); break;
         default: break;
     }
@@ -142,8 +142,8 @@ void cfg_ent_reset(tap_dance_state_t *state, void *user_data) {
     switch (xtap_state.state) {
         case TD_SINGLE_TAP: unregister_code(KC_ENT); break;
         case TD_SINGLE_HOLD: layer_off(_CFG); break;
-        case TD_DOUBLE_TAP: reset_oneshot_layer(); break;
-        case TD_DOUBLE_HOLD: reset_oneshot_layer(); layer_off(_CFG); break;
+        case TD_DOUBLE_TAP: break;
+        case TD_DOUBLE_HOLD: break;
         case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_ENT); break;
         default: break;
     }
