@@ -7,6 +7,7 @@ enum layers
     _SYM3,
     _NUM,
     _FKEYS,
+    _MM,
     _NAV,
     _MOUSE,
     _CFG,
