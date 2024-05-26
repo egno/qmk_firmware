@@ -34,7 +34,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_A_R] = LAYOUT(
         KC_ESC,             KC_Y,       KC_U,    KC_L,    KC_J,
         KC_O,               KC_I,       KC_E,    KC_N,    KC_M,
-        KC_SCLN,            KC_COMM,    KC_H,    KC_K,      KC_V,
+        KC_SCLN,            KC_COMM,    KC_H,    KC_K,    KC_V,
+                                XXXXXXX, XXXXXXX, XXXXXXX
+    ),
+    [_GAME] = LAYOUT(
+        KC_ESC,             KC_Q,       KC_W,      KC_E,        KC_R,
+        KC_LSFT,            KC_A,       KC_S,      KC_D,        KC_F,
+        KC_LCTL,            KC_Z,       KC_X,      KC_C,        KC_V,
+                                LT(_NUM, KC_TAB), LT(_GAME_R, KC_ENT), KC_SPC
+    ),
+    [_GAME_R] = LAYOUT(
+        LT(_CFG, KC_O),     KC_I,       KC_U,      KC_Y,        KC_T,
+        KC_L,               KC_K,       KC_J,      KC_H,        KC_G,
+        KC_DOT,            KC_COMM,     KC_M,      KC_N,        KC_B,
                                 XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_SYM] = LAYOUT(
@@ -86,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______
     ),
     [_CFG] = LAYOUT(
-        XXXXXXX,        OSL(_SYM3),     XXXXXXX,        OSL(_NAV),        XXXXXXX,
+        TO(_GAME),      OSL(_SYM3),     XXXXXXX,        OSL(_NAV),        XXXXXXX,
         OSL(_MM),       OSL(_SYM),      OSL(_NUM),      TO(_A),         XXXXXXX,
         OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  XXXXXXX,
                                  XXXXXXX, XXXXXXX, _______
