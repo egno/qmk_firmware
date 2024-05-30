@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______
     ),
     [_CFG] = LAYOUT(
-        XXXXXXX,        OSL(_SYM3),     OSL(_FN),       OSL(_NAV),      KC_F17,
+        XXXXXXX,        OSL(_SYM3),     OSL(_FKEYS),       OSL(_NAV),      KC_F17,
         OSL(_MM),       OSL(_SYM),      OSL(_NUM),      TO(_A),         KC_F18,
         OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  KC_F19,
                                  XXXXXXX, XXXXXXX, _______
