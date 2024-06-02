@@ -1,31 +1,55 @@
-CB(minus_combo, KC_MINS, KC_P, KC_T)
-CB(equal_combo, KC_EQL, KC_L, KC_N)
-
-CB(backslash_combo, KC_BSLS, KC_T, KC_C)
-CB(grave_combo, KC_GRAVE, KC_N, KC_K)
-
-CB(exlm_combo, LSFT(KC_1) , KC_B, KC_G)
-CB(qstn_combo, LSFT(KC_SLASH) , KC_J, KC_M)
-
-CB(cln_combo, LSFT(KC_SCLN) , KC_G, KC_D)
-CB(quot_combo, KC_QUOT , KC_M, KC_V)
-
-
+#                               [{ ]}
+#                               P-B
 CB(open_square_brackets_combo, KC_LBRC, KC_P, KC_B)
 CB(close_square_brackets_combo, KC_RBRC, KC_L, KC_J)
 
+#                               (  )
+#                               T-G
 CB(open_brackets_combo, LSFT(KC_9), KC_T, KC_G)
 CB(close_brackets_combo, LSFT(KC_0), KC_N, KC_M)
 
+#                               {  }
+#                               C-D
 CB(open_s_brackets_combo, LSFT(KC_LBRC), KC_C, KC_D)
 CB(close_s_brackets_combo, LSFT(KC_RBRC), KC_K, KC_V)
+
+
+#   Q       W       F       P       B
+#   KC_DEL          <  >    -_ =+   !  ?
+#   A       S       U       T       G
+CB(del_combo, KC_DEL, KC_Q, KC_A)
 
 CB(lt_combo, LSFT(KC_COMM), KC_F, KC_S)
 CB(gt_combo, LSFT(KC_DOT), KC_U, KC_E)
 
-CB(bast_combo, LALT(KC_E), KC_S, KC_X)
+CB(minus_combo, KC_MINS, KC_P, KC_T)
+CB(equal_combo, KC_EQL, KC_L, KC_N)
 
+CB(exlm_combo, LSFT(KC_1) , KC_B, KC_G)
+CB(qstn_combo, LSFT(KC_SLASH) , KC_J, KC_M)
+
+#   A       S       U       T       G
+#           *  /    ´       '" :    `~ \|
+#   .       Z       X       C       D
 CB(asterisk_combo, KC_PAST, KC_Z, KC_R)
 CB(slash_combo, KC_PSLS, KC_COMM, KC_I)
 
-CB(del_combo, KC_DEL, KC_Q, KC_A)
+CB(bast_combo, LALT(KC_E), KC_S, KC_X)
+
+CB(quot_combo, KC_QUOT , KC_T, KC_C)
+CB(cln_combo, LSFT(KC_SCLN) , KC_N, KC_K)
+
+CB(backslash_combo, KC_BSLS, KC_M, KC_V)
+CB(grave_combo, KC_GRAVE, KC_G, KC_D)
+
+
+
+
+
+
+
+
+
+
+
+
