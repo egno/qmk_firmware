@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_A_R] = LAYOUT(
         KC_ESC,             KC_Y,       KC_U,    KC_L,    KC_J,
         KC_O,               KC_I,       KC_E,    KC_N,    KC_M,
-        KC_SCLN,            KC_COMM,    KC_H,    KC_K,    KC_V,
+        KC_COMM,            KC_SCLN,    KC_H,    KC_K,    KC_V,
                                 XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_GAME] = LAYOUT(
@@ -70,13 +70,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUM] = LAYOUT(
         KC_COMM,  KC_1,  KC_2,  KC_3,  KC_EQL,
         KC_0,     KC_4,  KC_5,  KC_6,  KC_MINS,
-        KC_DOT,   KC_7,  KC_8,  KC_9,  KC_SLSH,
+        _______,  KC_7,  KC_8,  KC_9,  KC_SLSH,
                                         _______, TD(TD_FN_SPC_NAV_TAB), _______
     ),
     [_FKEYS] = LAYOUT(
-        KC_F15,  KC_F1,  KC_F2,  KC_F3,  KC_F11,
+        KC_F14,  KC_F1,  KC_F2,  KC_F3,  KC_F11,
         KC_F10,  KC_F4,  KC_F5,  KC_F6,  KC_F12,
-        KC_F14,  KC_F7,  KC_F8,  KC_F9,  KC_F13,
+        KC_COMM, KC_F7,  KC_F8,  KC_F9,  KC_F13,
                                         _______, _______, _______
     ),
     [_MM] = LAYOUT(
@@ -106,11 +106,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-
 layer_state_t layer_state_set_user(layer_state_t state) {
 #ifdef CONSOLE_ENABLE
     uprintf("LAYER ______GMNFD32SRA\n");
     uprintf("      %016b\n", state);
 #endif
 return state;
-}
+};
