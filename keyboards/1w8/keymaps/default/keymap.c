@@ -50,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_SYM] = LAYOUT(
-        LSFT(KC_GRV),   LSFT(KC_1),    LSFT(KC_2), LSFT(KC_3),  LSFT(KC_EQL),
-        XXXXXXX,        LSFT(KC_4),    LSFT(KC_5), LSFT(KC_6),  LSFT(KC_MINS),
-        LSFT(KC_BSLS),  LSFT(KC_7),    LSFT(KC_8), LSFT(KC_9),  LSFT(KC_0),
+        LSFT(KC_GRV),   LSFT(KC_7),    LSFT(KC_8), LSFT(KC_9),  LSFT(KC_EQL),
+        LSFT(KC_0),     LSFT(KC_4),    LSFT(KC_5), LSFT(KC_6),  LSFT(KC_MINS),
+        LSFT(KC_BSLS),  LSFT(KC_1),    LSFT(KC_2), LSFT(KC_3),  XXXXXXX,
                                         _______, TD(TD_S2_SPC_NAV_TAB), _______
     ),
     [_SYM2] = LAYOUT(
@@ -68,15 +68,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______
     ),
     [_NUM] = LAYOUT(
-        KC_COMM,  KC_1,  KC_2,  KC_3,  KC_EQL,
+        KC_COMM,  KC_7,  KC_8,  KC_9,  KC_EQL,
         KC_0,     KC_4,  KC_5,  KC_6,  KC_MINS,
-        _______,  KC_7,  KC_8,  KC_9,  KC_SLSH,
+        _______,  KC_1,  KC_2,  KC_3,  KC_SLSH,
                                         _______, TD(TD_FN_SPC_NAV_TAB), _______
     ),
     [_FKEYS] = LAYOUT(
-        KC_F14,  KC_F1,  KC_F2,  KC_F3,  KC_F11,
+        KC_F14,  KC_F7,  KC_F8,  KC_F9,  KC_F11,
         KC_F10,  KC_F4,  KC_F5,  KC_F6,  KC_F12,
-        KC_COMM, KC_F7,  KC_F8,  KC_F9,  KC_F13,
+        KC_COMM, KC_F1,  KC_F2,  KC_F3,  KC_F13,
                                         _______, _______, _______
     ),
     [_MM] = LAYOUT(
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______
     ),
     [_CFG] = LAYOUT(
-        AS_TOGG,        OSL(_SYM3),     OSL(_FKEYS),       OSL(_NAV),      KC_F17,
+        AS_TOGG,        OSL(_SYM3),     OSL(_FKEYS),    OSL(_NAV),      KC_F17,
         OSL(_MM),       OSL(_SYM),      OSL(_NUM),      TO(_A),         KC_F18,
         OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  KC_F19,
                                  XXXXXXX, XXXXXXX, _______
