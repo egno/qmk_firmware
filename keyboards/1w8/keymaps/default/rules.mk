@@ -5,4 +5,3 @@ MOUSEKEY_ENABLE = yes
 COMBO_ENABLE = yes
 AUTO_SHIFT_ENABLE = no
 
-SRC += tap_dance.c
