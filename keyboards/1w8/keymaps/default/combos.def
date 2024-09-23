@@ -33,13 +33,14 @@ CB(exlm_combo, LSFT(KC_1) ,     KC_B, KC_G)
 CB(qstn_combo, LSFT(KC_SLASH) , KC_J, KC_M)
 
 /*  A       R       S       T       G
-*           *  /    ´       '" :    `~ \|
+*           *  /    ´  |   '" :    `~ \|
 *   .       Z       X       C       D
 */
 CB(asterisk_combo, KC_PAST,     KC_R, KC_Z)
 CB(slash_combo, KC_PSLS,        KC_SCLN, KC_I)
 
 CB(bast_combo, LALT(KC_E),      KC_S, KC_X)
+CB(pipe_combo, LSFT(KC_BSLS),   KC_E, KC_H)
 
 CB(quot_combo, KC_QUOT ,        KC_T, KC_C)
 CB(cln_combo, LSFT(KC_SCLN) ,   KC_N, KC_K)
