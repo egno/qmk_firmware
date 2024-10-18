@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_A_R] = LAYOUT(
         KC_ESC,             KC_Y,       KC_U,    KC_L,    KC_J,
         KC_O,               KC_I,       KC_E,    KC_N,    KC_M,
-        KC_COMM,            KC_SCLN,    KC_H,    KC_K,    KC_V,
+        LSFT_T(KC_COMM),    KC_SCLN,    KC_H,    KC_K,    KC_V,
                                 XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_SYM] = LAYOUT(
@@ -98,10 +98,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BTN2,  KC_BTN4,  KC_BTN5,  KC_BTN6,  KC_BTN7,
                                         _______, _______, _______
     ),
+    [_GAME] = LAYOUT(
+        KC_TAB,     KC_Q,   KC_W,   KC_E,   KC_R,
+        KC_LSFT,    KC_A,   KC_S,   KC_D,   KC_F,
+        KC_LCTL,    KC_Z,   KC_X,   KC_C,   KC_V,
+                                LT(_CFG,KC_ESC), LT(_GAME2, KC_ENT), KC_SPC
+    ),
+    [_GAME2] = LAYOUT(
+        KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,
+        KC_G,   KC_H,   KC_J,   KC_K,   KC_L,
+        KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,
+                                XXXXXXX, KC_ENT, KC_SPC
+    ),
     [_CFG] = LAYOUT(
-        AS_TOGG,        TO(_SYM3),      TO(_FKEYS),     TO(_SYM3),      KC_F17,
-        TO(_MM),        TO(_SYM),       TO(_NUM),       TO(_A),         KC_F18,
-        OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  KC_F19,
+        TO(_GAME),        TO(_SYM3),      TO(_FKEYS),     TO(_SYM3),      KC_F16,
+        TO(_MM),        TO(_SYM),       TO(_NUM),       TO(_A),         KC_F17,
+        OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  KC_F18,
                                  XXXXXXX, XXXXXXX, _______
     ),
 };
@@ -252,7 +264,7 @@ void cfg_ent_finished(tap_dance_state_t *state, void *user_data) {
     xtap_state.state = cur_dance(state);
     switch (xtap_state.state) {
         case TD_SINGLE_TAP: register_code(KC_ENT); break;
-        case TD_SINGLE_HOLD: reset_oneshot_layer(); layer_clear(); layer_on(_CFG); break;
+        case TD_SINGLE_HOLD: layer_clear(); layer_on(_CFG); break;
         case TD_DOUBLE_TAP: break;
         case TD_DOUBLE_HOLD: clear_oneshot_mods(); reset_oneshot_layer(); layer_clear(); layer_on(_CFG); break;
         case TD_DOUBLE_SINGLE_TAP: tap_code(KC_ENT); register_code(KC_ENT); break;
@@ -263,7 +275,7 @@ void cfg_ent_finished(tap_dance_state_t *state, void *user_data) {
 void cfg_ent_reset(tap_dance_state_t *state, void *user_data) {
     switch (xtap_state.state) {
         case TD_SINGLE_TAP: unregister_code(KC_ENT); break;
-        case TD_SINGLE_HOLD: reset_oneshot_layer(); layer_clear(); break;
+        case TD_SINGLE_HOLD: layer_clear(); break;
         case TD_DOUBLE_TAP: break;
         case TD_DOUBLE_HOLD: break;
         case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_ENT); break;
@@ -271,6 +283,7 @@ void cfg_ent_reset(tap_dance_state_t *state, void *user_data) {
     }
     xtap_state.state = TD_NONE;
 }
+
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_R_SPC_NAV_TAB]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, r_spc_tab_finished, r_spc_tab_reset),

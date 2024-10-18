@@ -10,5 +10,7 @@ enum layers
     _MM,
     _NAV,
     _MOUSE,
+    _GAME,
+    _GAME2,
     _CFG,
 };
