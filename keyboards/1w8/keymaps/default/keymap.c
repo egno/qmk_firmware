@@ -50,6 +50,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LSFT_T(KC_COMM),    KC_SCLN,    KC_H,    KC_K,    KC_V,
                                 XXXXXXX, XXXXXXX, XXXXXXX
     ),
+    [_GAME] = LAYOUT(
+        KC_TAB,     KC_Q,   KC_W,   KC_E,   KC_R,
+        KC_LSFT,    KC_A,   KC_S,   KC_D,   KC_F,
+        KC_LCTL,    KC_Z,   KC_X,   KC_C,   KC_V,
+                                LT(_CFG,KC_ESC), LT(_GAME2, KC_ENT), KC_SPC
+    ),
+    [_GAME2] = LAYOUT(
+        KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,
+        KC_G,   KC_H,   KC_J,   KC_K,   KC_L,
+        KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,
+                                XXXXXXX, KC_ENT, KC_SPC
+    ),
     [_SYM] = LAYOUT(
         LSFT(KC_GRV),   LSFT(KC_7),    LSFT(KC_8), LSFT(KC_9),  LSFT(KC_EQL),
         LSFT(KC_0),     LSFT(KC_4),    LSFT(KC_5), LSFT(KC_6),  LSFT(KC_MINS),
@@ -98,21 +110,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BTN2,  KC_BTN4,  KC_BTN5,  KC_BTN6,  KC_BTN7,
                                         _______, _______, _______
     ),
-    [_GAME] = LAYOUT(
-        KC_TAB,     KC_Q,   KC_W,   KC_E,   KC_R,
-        KC_LSFT,    KC_A,   KC_S,   KC_D,   KC_F,
-        KC_LCTL,    KC_Z,   KC_X,   KC_C,   KC_V,
-                                LT(_CFG,KC_ESC), LT(_GAME2, KC_ENT), KC_SPC
-    ),
-    [_GAME2] = LAYOUT(
-        KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,
-        KC_G,   KC_H,   KC_J,   KC_K,   KC_L,
-        KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,
-                                XXXXXXX, KC_ENT, KC_SPC
-    ),
     [_CFG] = LAYOUT(
-        TO(_GAME),        TO(_SYM3),      TO(_FKEYS),     TO(_SYM3),      KC_F16,
-        TO(_MM),        TO(_SYM),       TO(_NUM),       TO(_A),         KC_F17,
+        DF(_GAME),      TO(_SYM3),      TO(_FKEYS),     TO(_SYM3),      KC_F16,
+        TO(_MM),        TO(_SYM),       TO(_NUM),       DF(_A),         KC_F17,
         OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LGUI),  KC_F18,
                                  XXXXXXX, XXXXXXX, _______
     ),
